@@ -1,0 +1,107 @@
+mysql> SELECT achter_naam, voor_naam
+    -> FROM studenten
+    -> WHERE voor_naam LIKE 'C%' OR achter_naam LIKE 'A';
++-------------+-----------+
+| achter_naam | voor_naam |
++-------------+-----------+
+| Ekhart      | Cor       |
++-------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT achter_naam, voor_naam FROM studenten WHERE voor_naam LIKE 'C%' OR achter_naam LIKE 'a';
++-------------+-----------+
+| achter_naam | voor_naam |
++-------------+-----------+
+| Ekhart      | Cor       |
++-------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT achter_naam, voor_naam FROM studenten WHERE voor_naam LIKE 'C%' OR achter_naam LIKE 'a%';
++-------------+-----------+
+| achter_naam | voor_naam |
++-------------+-----------+
+| Arias       | Patricia  |
+| Ekhart      | Cor       |
++-------------+-----------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT achter_naam, voor_naam
+    -> FROM studenten
+    -> WHERE voor_naam LIKE '_____n';
++-------------+-----------+
+| achter_naam | voor_naam |
++-------------+-----------+
+| Ekhart      | Marten    |
++-------------+-----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT DISTINCT plaats
+    -> FROM studenten
+    -> ORDER by plaats;
++-----------+
+| plaats    |
++-----------+
+| Groningen |
++-----------+
+1 row in set (0.00 sec)
+
+
+mysql> SELECT COUNT(*)
+    -> FROM studenten;
++----------+
+| COUNT(*) |
++----------+
+|        5 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> SELECT COUNT(*)
+    -> FROM studenten
+    -> WHERE geslacht='M';
++----------+
+| COUNT(*) |
++----------+
+|        4 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> SELECT Month(geboorte_datum) AS 'Month', COUNT(*)
+    -> FROM studenten
+    -> GROUP BY Month
+    -> ORDER BY Month;
++-------+----------+
+| Month | COUNT(*) |
++-------+----------+
+|     2 |        1 |
+|     6 |        1 |
+|     7 |        2 |
+|    11 |        1 |
++-------+----------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT
+    ->      test_id AS 'Test',
+    ->      MIN(score) AS min,
+    ->     MAX(score) AS max,
+    ->     MAX(score)-MIN(score) AS 'range',
+    ->      SUM(score) AS total,
+    ->     AVG(score) AS average
+    ->     FROM scores
+    ->     GROUP BY test_id;
++------+------+------+-------+-------+---------+
+| Test | min  | max  | range | total | average |
++------+------+------+-------+-------+---------+
+|    1 |    7 |   10 |     3 |    44 |  8.8000 |
+|    2 |    5 |   10 |     5 |    41 |  8.2000 |
+|    3 |    7 |   10 |     3 |    43 |  8.6000 |
+|    5 |    6 |   10 |     4 |    40 |  8.0000 |
+|    6 |    2 |   10 |     8 |    28 |  5.6000 |
++------+------+------+-------+-------+---------+
+5 rows in set (0.00 sec)
+
+mysql> 
+
+
+
+
+
